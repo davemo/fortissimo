@@ -1,4 +1,5 @@
 const electron = require('electron')
+const installReactDevTools = require('./install-react-devtools-in-electron.js');
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
@@ -46,6 +47,7 @@ function createWindow () {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
+app.on('ready', installReactDevTools);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
