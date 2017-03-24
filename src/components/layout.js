@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
-const Common = styled.div`
-  height: 50px;
-  background: linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%);
-`;
+const gradient = () => {
+  return `
+    background: linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%);
+  `;
+}
 
-export const Header = Common;
-export const Footer = Common;
+export const Header = styled.div`${gradient()}`;
+Header.displayName = 'Header';
+
+export const Footer = styled.div`${gradient()}`;
+Footer.displayName = 'Footer';
 
 export const Stage = styled.div`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   background: rgb(233,223,196);
   background: linear-gradient(to right,
     #e9dfc4 0%,
@@ -32,3 +39,4 @@ export const Stage = styled.div`
   background-size: 120px;
   background-repeat: repeat;
 `
+Stage.displayName = 'Stage';

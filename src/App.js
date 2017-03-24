@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import appState from './state.js';
 import { Stage, Header, Footer } from './components/layout';
 
-const DeviceChain = styled.div``
+const DeviceChain = styled.div`
+  flex: 1;
+`
 
 const ActiveDevice = styled.div`
   background: orange;
@@ -73,7 +75,7 @@ class App extends Component {
     return (
       <Provider store={appState}>
         <Stage>
-          <Header />
+          <Header>Header</Header>
           <DeviceChain>
             <NoiseGate>Noise Gate</NoiseGate>
             <Cabinet active>Cabinet</Cabinet>
@@ -85,7 +87,7 @@ class App extends Component {
           </DeviceChain>
           <ActiveDevice>Active Device Here</ActiveDevice>
           <DevTools />
-          <Footer />
+          <Footer>Footer</Footer>
         </Stage>
       </Provider>
     );
