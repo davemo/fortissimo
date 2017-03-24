@@ -56,8 +56,8 @@ const StyledCounter = styled.span`
   background: ${props => props.isOdd ? 'blue' : 'orange'};
 `;
 
-@inject("store") @observer
-class Counter extends Component {
+@inject("store")
+@observer class Counter extends Component {
   increment = () => {
     this.props.store.count++;
   }
