@@ -11,10 +11,10 @@
     "styled-components": "^1.4.4"
   },
   "devDependencies": {
-    "electron": "^1.6.2",
+    "custom-react-scripts": "0.0.23",
+    "electron": "beta",
     "mobx-react-devtools": "^4.2.11",
-    "npm-run-all": "^4.0.2",
-    "custom-react-scripts": "0.0.23"
+    "npm-run-all": "^4.0.2"
   },
   "scripts": {
     "start": "run-p react-scripts-start electron",
