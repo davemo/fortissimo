@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { Provider, observer, inject } from 'mobx-react';
+import DevTools from 'mobx-react-devtools';
 import styled from 'styled-components';
+import appState from './state.js';
 
 const Stage = styled.div`
   background: brown;
@@ -49,22 +52,51 @@ const Reverb = styled(Device)`
   background: purple;
 `
 
+const StyledCounter = styled.span`
+  background: ${props => props.isOdd ? 'blue' : 'orange'};
+`;
+
+@inject("store") @observer
+class Counter extends Component {
+  increment = () => {
+    this.props.store.count++;
+  }
+
+  decrement = () => {
+    this.props.store.count--;
+  }
+
+  render() {
+    return(
+      <StyledCounter>
+        <span>{this.props.store.count}</span>
+        <button onClick={this.increment}>Increment</button>
+        <button onClick={this.decrement}>Decrement</button>
+      </StyledCounter>
+    )
+  }
+}
+
 class App extends Component {
   render() {
     return (
-      <Stage>
-        Stage
-        <DeviceChain>
-          <NoiseGate>Noise Gate</NoiseGate>
-          <Cabinet active>Cabinet</Cabinet>
-          <Filter>Filter</Filter>
-          <Stomp>Stomp</Stomp>
-          <Delay>Delay</Delay>
-          <Modulation>Modulation</Modulation>
-          <Reverb>Reverb</Reverb>
-        </DeviceChain>
-        <ActiveDevice>Active Device Here</ActiveDevice>
-      </Stage>
+      <Provider store={appState}>
+        <Stage>
+          Stage
+          <DeviceChain>
+            <NoiseGate>Noise Gate</NoiseGate>
+            <Cabinet active>Cabinet</Cabinet>
+            <Filter>Filter</Filter>
+            <Stomp>Stomp</Stomp>
+            <Delay>Delay</Delay>
+            <Modulation>Modulation</Modulation>
+            <Reverb>Reverb</Reverb>
+          </DeviceChain>
+          <ActiveDevice>Active Device Here</ActiveDevice>
+          <Counter />
+          <DevTools />
+        </Stage>
+      </Provider>
     );
   }
 }
