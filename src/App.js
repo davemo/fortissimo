@@ -3,15 +3,9 @@ import { Provider, observer, inject } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 import styled from 'styled-components';
 import appState from './state.js';
+import { Stage, Header, Footer } from './components/layout';
 
-const Stage = styled.div`
-  background: brown;
-`
-
-const DeviceChain = styled.div`
-  background: yellow;
-  height: 40px;
-`
+const DeviceChain = styled.div``
 
 const ActiveDevice = styled.div`
   background: orange;
@@ -19,8 +13,6 @@ const ActiveDevice = styled.div`
 `
 
 const Device = styled.div`
-  display: inline-block;
-  margin: 0 20px;
   width: 100px;
   height: 100px;
   border: ${props => props.active ? '3px solid black' : '1px solid black'};
@@ -51,7 +43,6 @@ const Modulation = styled(Device)`
 const Reverb = styled(Device)`
   background: purple;
 `
-
 const StyledCounter = styled.span`
   background: ${props => props.isOdd ? 'blue' : 'orange'};
 `;
@@ -82,7 +73,7 @@ class App extends Component {
     return (
       <Provider store={appState}>
         <Stage>
-          Stage
+          <Header />
           <DeviceChain>
             <NoiseGate>Noise Gate</NoiseGate>
             <Cabinet active>Cabinet</Cabinet>
@@ -93,8 +84,8 @@ class App extends Component {
             <Reverb>Reverb</Reverb>
           </DeviceChain>
           <ActiveDevice>Active Device Here</ActiveDevice>
-          <Counter />
           <DevTools />
+          <Footer />
         </Stage>
       </Provider>
     );
