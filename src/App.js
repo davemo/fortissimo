@@ -7,26 +7,29 @@ import { Stage, Header, Footer } from './components/layout';
 
 const DeviceChain = styled.div`
   flex: 1;
+  display: flex;
 `
+DeviceChain.displayName = 'DeviceChain';
 
 const ActiveDevice = styled.div`
   background: orange;
   height: 100px;
 `
-
 const Device = styled.div`
   width: 100px;
   height: 100px;
   border: ${props => props.active ? '3px solid black' : '1px solid black'};
   text-align: center;
+  flex-direction: row;
+  flex: 1 1 auto;
+  margin: 20px;
 `
+
+Device.displayName = 'Device';
 
 const Cabinet = styled(Device)`
-  width: 200px;
-  height: 150px;
   background: yellow;
 `
-
 const NoiseGate = styled(Device)`
   background: brown;
 `
@@ -78,7 +81,7 @@ class App extends Component {
           <Header>Header</Header>
           <DeviceChain>
             <NoiseGate>Noise Gate</NoiseGate>
-            <Cabinet active>Cabinet</Cabinet>
+            <Cabinet>Cabinet</Cabinet>
             <Filter>Filter</Filter>
             <Stomp>Stomp</Stomp>
             <Delay>Delay</Delay>
