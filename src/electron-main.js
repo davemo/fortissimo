@@ -8,6 +8,12 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
+const startUrl = process.env.ELECTRON_START_URL || url.format({
+    pathname: path.join(__dirname, '/../build/index.html'),
+    protocol: 'file:',
+    slashes: true
+});
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -16,20 +22,8 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 1200, height: 800})
 
-  // and load the index.html of the app.
-  // mainWindow.loadURL(url.format({
-  //   pathname: path.join(__dirname, 'index.html'),
-  //   protocol: 'file:',
-  //   slashes: true
-  // }))
-
-  mainWindow.loadURL(url.format({
-    pathname: 'localhost:3000',
-    protocol: 'http:',
-    slashes: true
-  }))
-
-  // mainWindow.loadURL('http://localhost:300')
+  // and load the index.html of the app for production or localhost:3000 for dev
+  mainWindow.loadURL(startUrl);
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()

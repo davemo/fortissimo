@@ -15,15 +15,17 @@
   "devDependencies": {
     "custom-react-scripts": "0.0.23",
     "electron-devtools-installer": "^2.1.0",
+    "foreman": "^2.0.0",
     "mobx-react-devtools": "^4.2.11",
     "npm-run-all": "^4.0.2"
   },
+  "homepage": "./",
   "scripts": {
-    "start": "run-p react-scripts-start electron",
-    "react-scripts-start": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron": "sleep 2 && electron ."
+    "electron": "electron .",
+    "dev": "nf start"
   }
 }
